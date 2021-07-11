@@ -101,13 +101,12 @@
 		4DB51D33269ADFA700279B74 /* Reminders */ = {
 			isa = PBXGroup;
 			children = (
+				4DB51D69269AED0F00279B74 /* Resources */,
+				4DB51D68269AECFE00279B74 /* Controllers */,
+				4DB51D67269AECF800279B74 /* View */,
 				4DB51D64269AE14800279B74 /* Model */,
 				4DB51D34269ADFA700279B74 /* AppDelegate.swift */,
 				4DB51D36269ADFA700279B74 /* SceneDelegate.swift */,
-				4DB51D38269ADFA700279B74 /* ViewController.swift */,
-				4DB51D3A269ADFA700279B74 /* Main.storyboard */,
-				4DB51D3D269ADFA800279B74 /* Assets.xcassets */,
-				4DB51D3F269ADFA800279B74 /* LaunchScreen.storyboard */,
 				4DB51D42269ADFA800279B74 /* Info.plist */,
 			);
 			path = Reminders;
@@ -137,6 +136,39 @@
 				4DB51D65269AE15D00279B74 /* Reminder.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4DB51D67269AECF800279B74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4DB51D6A269AED2D00279B74 /* Storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4DB51D68269AECFE00279B74 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4DB51D38269ADFA700279B74 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4DB51D69269AED0F00279B74 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4DB51D3D269ADFA800279B74 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4DB51D6A269AED2D00279B74 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4DB51D3F269ADFA800279B74 /* LaunchScreen.storyboard */,
+				4DB51D3A269ADFA700279B74 /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
