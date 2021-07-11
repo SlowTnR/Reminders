@@ -7,16 +7,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Reminder List View Controller-->
         <scene sceneID="206-FU-7V4">
             <objects>
-                <tableViewController id="Rbd-3Z-eqH" sceneMemberID="viewController">
+                <tableViewController id="Rbd-3Z-eqH" customClass="ReminderListViewController" customModule="Reminders" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qsn-iE-caQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="99" id="rdB-RM-RJh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReminderListCell" rowHeight="99" id="rdB-RM-RJh" customClass="ReminderListCell" customModule="Reminders" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="99"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rdB-RM-RJh" id="MJO-1c-sBw">
@@ -30,6 +30,9 @@
                                                 <constraint firstAttribute="width" constant="44" id="rTf-yI-Z7x"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="circle" catalog="system"/>
+                                            <connections>
+                                                <action selector="doneButtonTriggered:" destination="rdB-RM-RJh" eventType="touchUpInside" id="ZTR-V4-VwR"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCR-B5-wHA">
                                             <rect key="frame" x="72" y="20" width="33" height="21"/>
@@ -56,6 +59,11 @@
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="i3z-c5-52q" secondAttribute="bottom" constant="20" symbolic="YES" id="m4p-57-7tL"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="i3z-c5-52q" id="I1C-a3-quU"/>
+                                    <outlet property="doneButton" destination="hQU-HG-4ab" id="2Wc-59-rpT"/>
+                                    <outlet property="titleLabel" destination="LCR-B5-wHA" id="N2u-84-B1M"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
