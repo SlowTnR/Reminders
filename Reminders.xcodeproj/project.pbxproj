@@ -15,6 +15,7 @@
 		4DB51D41269ADFA800279B74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB51D3F269ADFA800279B74 /* LaunchScreen.storyboard */; };
 		4DB51D4C269ADFA800279B74 /* RemindersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB51D4B269ADFA800279B74 /* RemindersTests.swift */; };
 		4DB51D57269ADFA800279B74 /* RemindersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB51D56269ADFA800279B74 /* RemindersUITests.swift */; };
+		4DB51D66269AE15D00279B74 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB51D65269AE15D00279B74 /* Reminder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		4DB51D52269ADFA800279B74 /* RemindersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemindersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB51D56269ADFA800279B74 /* RemindersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersUITests.swift; sourceTree = "<group>"; };
 		4DB51D58269ADFA800279B74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DB51D65269AE15D00279B74 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		4DB51D33269ADFA700279B74 /* Reminders */ = {
 			isa = PBXGroup;
 			children = (
+				4DB51D64269AE14800279B74 /* Model */,
 				4DB51D34269ADFA700279B74 /* AppDelegate.swift */,
 				4DB51D36269ADFA700279B74 /* SceneDelegate.swift */,
 				4DB51D38269ADFA700279B74 /* ViewController.swift */,
@@ -126,6 +129,14 @@
 				4DB51D58269ADFA800279B74 /* Info.plist */,
 			);
 			path = RemindersUITests;
+			sourceTree = "<group>";
+		};
+		4DB51D64269AE14800279B74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4DB51D65269AE15D00279B74 /* Reminder.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 				4DB51D39269ADFA700279B74 /* ViewController.swift in Sources */,
 				4DB51D35269ADFA700279B74 /* AppDelegate.swift in Sources */,
 				4DB51D37269ADFA700279B74 /* SceneDelegate.swift in Sources */,
+				4DB51D66269AE15D00279B74 /* Reminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
