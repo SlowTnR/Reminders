@@ -54,6 +54,14 @@ class ReminderDetailEditDataSource: NSObject {
     
     var reminder: Reminder
     
+    private lazy var formatter: DateFormatter = {
+       
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    
     init(reminder: Reminder) {
         self.reminder = reminder
     }
@@ -73,7 +81,7 @@ class ReminderDetailEditDataSource: NSObject {
             }
         case .dueDate:
             if indexPath.row == 0 {
-                cell.textLabel?.text = reminder.dueDate.description
+                cell.textLabel?.text = formatter.string(from: reminder.dueDate)
             } else {
                 if let dueDateCell = cell as? EditDateCell {
                     dueDateCell.configure(date: reminder.dueDate)
@@ -110,5 +118,8 @@ extension ReminderDetailEditDataSource: UITableViewDataSource {
         return section.displayText
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
     
 }
