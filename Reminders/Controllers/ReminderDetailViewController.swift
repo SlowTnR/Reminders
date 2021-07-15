@@ -12,7 +12,7 @@ class ReminderDetailViewController: UITableViewController {
  
     
     private var reminder: Reminder?
-    private var detailViewDataSource: ReminderDetailViewDataSource?
+    private var dataSource: UITableViewDataSource?
     
     func configure(with reminder: Reminder) {
         self.reminder = reminder
@@ -20,14 +20,31 @@ class ReminderDetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setEditing(false, animated: false)
+        navigationItem.setRightBarButton(editButtonItem, animated: true)
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: ReminderDetailEditDataSource.dateLabelCellIdentifier)
+        
+      
+        
+        
+        
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
         
         guard let reminder = reminder else {
             fatalError("No reminder found in detail view")
         }
         
-        detailViewDataSource = ReminderDetailViewDataSource(reminder: reminder)
-        tableView.dataSource = detailViewDataSource
-        
+        if editing {
+            dataSource = ReminderDetailEditDataSource(reminder: reminder)
+        } else {           
+            dataSource = ReminderDetailViewDataSource(reminder: reminder)
+        }
+        tableView.dataSource = dataSource
+        tableView.reloadData()
     }
     
 }
