@@ -8,6 +8,8 @@
 import UIKit
 
 class ReminderListDataSource: NSObject {
+    typealias ReminderCompletedAction = (Int) -> Void
+    typealias ReminderDeletedAction = () -> Void
     
     private lazy var dateFormatter = RelativeDateTimeFormatter()
     
@@ -35,6 +37,26 @@ class ReminderListDataSource: NSObject {
     var filteredReminders: [Reminder] {
         return Reminder.testData.filter { filter.shouldInclude(date: $0.dueDate)}.sorted { $0.dueDate < $1.dueDate}
     }
+    
+    var percentComplete: Double {
+        guard filteredReminders.count > 0 else {
+            return 1
+        }
+        
+        let numComplete: Double = filteredReminders.reduce(0) { $0 + ($1.isComplete ? 1 : 0) }
+        return numComplete / Double(filteredReminders.count)
+    }
+    
+    private var reminderCompletedAction: ReminderCompletedAction?
+    private var reminderDeletedAction: ReminderDeletedAction?
+    
+    init(reminderCompletedAction: @escaping ReminderCompletedAction, reminderDeletedAction: @escaping ReminderDeletedAction) {
+        self.reminderCompletedAction = reminderCompletedAction
+        self.reminderDeletedAction = reminderDeletedAction
+        super.init()
+    }
+    
+    
     
     func update(_ reminder: Reminder, at row: Int) {
         let index = self.index(for: row)
@@ -87,7 +109,11 @@ extension ReminderListDataSource: UITableViewDataSource {
                        dateText: dateText,
                        isDone: currentReminder.isComplete) {
             Reminder.testData[indexPath.row].isComplete.toggle()
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            //tableView.reloadRows(at: [indexPath], with: .automatic)
+            var modifiedReminder = currentReminder
+            modifiedReminder.isComplete.toggle()
+            self.update(modifiedReminder, at: indexPath.row)
+            self.reminderCompletedAction?(indexPath.row)
             
         }
         
@@ -104,6 +130,7 @@ extension ReminderListDataSource: UITableViewDataSource {
         }) { (_) in
             tableView.reloadData()
         }
+        reminderDeletedAction?()
     }
     
 }
