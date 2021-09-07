@@ -49,10 +49,20 @@ class ReminderListViewController: UITableViewController {
         super.viewDidLoad()
         
         reminderListDataSource = ReminderListDataSource(reminderCompletedAction: { reminderIndex in
-            self.tableView.reloadRows(at: [IndexPath(row: reminderIndex, section: 0)], with: .automatic)
-            self.refreshProgressView()
+            DispatchQueue.main.async {
+                self.tableView.reloadRows(at: [IndexPath(row: reminderIndex, section: 0)], with: .automatic)
+                self.refreshProgressView()
+            }
+            
         }, reminderDeletedAction: {
-            self.refreshProgressView()
+            DispatchQueue.main.async {
+                self.refreshProgressView()
+            }
+        }, remindersChangedAction: {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshProgressView()
+            }
         })
         
         tableView.dataSource = reminderListDataSource
